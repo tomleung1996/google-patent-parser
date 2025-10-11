@@ -126,9 +126,12 @@ def write_batches(batches, initial_write=False):
         
         config = OUTPUT_CONFIG[key]
         mode = 'w' if initial_write else 'a'
+
+        # 将data中的\r \n \t全部换成空格
+        data = [[(str(item).replace('\r', ' ').replace('\n', ' ').replace('\t', ' ') if item is not None else '') for item in row] for row in data]
         
-        with open(config['path'], mode, newline='', encoding='utf-8') as f:
-            writer = csv.writer(f, quoting=csv.QUOTE_ALL)
+        with open(config['path'], mode, newline='', delimiter='\t', encoding='utf-8') as f:
+            writer = csv.writer(f, quoting=csv.QUOTE_MINIMAL)
             if initial_write:
                 writer.writerow(config['headers'])
             writer.writerows(data)
