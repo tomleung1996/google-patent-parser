@@ -7,7 +7,7 @@ IF OBJECT_ID(N'dbo.inventor', N'U') IS NOT NULL
     DROP TABLE dbo.inventor;
 GO
 CREATE TABLE dbo.inventor (
-    inventor_id BIGINT NOT NULL PRIMARY KEY,
+    inventor_id BIGINT NOT NULL,
     name NVARCHAR(MAX) NOT NULL,
     country_code VARCHAR(2) NULL
 );
@@ -18,7 +18,7 @@ IF OBJECT_ID(N'dbo.assignee', N'U') IS NOT NULL
     DROP TABLE dbo.assignee;
 GO
 CREATE TABLE dbo.assignee (
-    assignee_id BIGINT NOT NULL PRIMARY KEY,
+    assignee_id BIGINT NOT NULL,
     name NVARCHAR(MAX) NOT NULL,
     country_code VARCHAR(2) NULL
 );
@@ -29,7 +29,7 @@ IF OBJECT_ID(N'dbo.examiner', N'U') IS NOT NULL
     DROP TABLE dbo.examiner;
 GO
 CREATE TABLE dbo.examiner (
-    examiner_id BIGINT NOT NULL PRIMARY KEY,
+    examiner_id BIGINT NOT NULL,
     name NVARCHAR(MAX) NULL,
     department NVARCHAR(MAX) NULL,
     level VARCHAR(32) NULL
